@@ -15,7 +15,8 @@ To save time in this process, the IT team suggested an ML system that detects in
 
 ## Hypothesis and how to validate?
 
-- List here your project hypothesis(es) and how you envision validating it (them).
+- **Hypothesis 1** focuses on the visual differentiation between healthy and infected leaves, which will be validated through EDA, feature extraction, and model-based visualizations.
+- **Hypothesis 2** proposes that a CNN can accurately predict the health status of a leaf, which will be validated through model training, evaluation metrics, and real-world testing.
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
 
