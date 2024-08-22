@@ -13,6 +13,7 @@ from src.machine_learning.predictive_analysis import (
 
 # Define the main function for the cherry leaves detector page
 def page_cherry_leaves_detector_body():
+    st.title('Powdery Mildew Detection in Cherry Leaves')
     # Display informational text to the user about the purpose of this page
     st.info(
         f"* The client is interested in determining whether a given cherry leaf is healthy "
