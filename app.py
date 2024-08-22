@@ -14,7 +14,7 @@ app = MultiPage(app_name="Cherry Leaves Disease Detector")
 
 # Add app pages
 app.add_page("Project Summary", page_summary_body)
-# app.add_page("Image Visualizer", page_image_visualizer_body)
+app.add_page("Image Visualizer", page_image_visualizer_body)
 # app.add_page("Image Analysis", page_image_analysis_body)
 # app.add_page("Model Training", page_model_training_body)
 # app.add_page("Model Evaluation", page_model_evaluation_body)
