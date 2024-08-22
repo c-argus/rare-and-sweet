@@ -14,12 +14,12 @@ def page_ml_performance():
     st.title("Train, Validation and Test Set: Labels Frequencies")
     st. write(
         f'Dataset was divided into 3 subsets: \n\n'
-        f'* Training Set: comprises 70% of the data.\n'
-        f'* Test Set: comprises 10% of the data.\n'
-        f'* Validation Set: comprises 20% of the data. \n'
+        f'* Training Set: consisting of 70% of the data.\n'
+        f'* Test Set: consisting of 10% of the data.\n'
+        f'* Validation Set: consisting of 20% of the data. \n'
     )
     st.write(
-        f"* The image dimensions for the ML model are based on the average size of all images in the 'Trainset':\n\n"
+        f"* The image dimensions for the ML model are determined by the average size of all images in the Training Set: \n\n"
         f'(256, 256, 3)'
     )
     st.write(
