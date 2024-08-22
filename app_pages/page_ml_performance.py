@@ -55,3 +55,55 @@ def page_ml_performance():
 
     st.write("### Generalised Performance on Test Set")
     st.dataframe(pd.DataFrame(load_test_evaluation(version), index=['Loss', 'Accuracy']))
+
+    st.info(
+        f'These results indicate that the model has attained an extremely low loss and very high accuracy, which reflects outstanding performance. '
+        f"A loss value of 0.0024 suggests that the model's predictions are highly accurate on average, while an accuracy of "
+        f'0.9988 indicates that the model correctly classifies the data points in approximately 99.88% of cases.'
+    )
+
+    st.write("### Key Concepts in Performance Metrics:")
+    st.write(
+        f"**Loss and Accuracy** are two fundamental metrics used to assess the effectiveness of machine learning models.\n\n"
+    
+        f'* **Loss:**\n\n'
+        f'  - Loss quantifies the errors made by a model, serving as an indicator of its performance.\n\n'
+        f'  - A **high loss** suggests that the model is making considerable errors, while a **low loss** indicates better performance with fewer errors.\n\n'
+        f'  - Tracking loss over time provides insights into the model\'s learning progress:\n\n'
+        f'    - **Fluctuating loss** might signal that the model is struggling to learn effectively.\n\n'
+        f'    - If the loss decreases during training but remains high on validation data, this could be a sign of **overfitting**, where the model is not generalizing well to new data.\n\n'
+    
+        f'* **Accuracy:**\n\n'
+        f'  - Accuracy measures the proportion of correct predictions made by the model relative to the total predictions.\n\n'
+        f'  - A **high accuracy** reflects that the model is making correct predictions most of the time, while **low accuracy** indicates frequent incorrect predictions.'
+    )
+
+    st.write(
+        f'**Learning Curves:**\n\n'
+        f'  - A learning curve is a visual representation that shows the evolution of a particular metric during the model’s training process.\n\n'
+        f'  - Typically, the **x-axis** represents time or training iterations, and the **y-axis** shows the metric being tracked, such as error rate or accuracy.\n\n'
+        f'  - Learning curves are valuable tools for monitoring how well the model is learning, diagnosing potential issues, and optimizing its performance.\n\n'
+    
+        f'* **Examples of Learning Curves:**\n\n'
+        f'  - Common types of learning curves include those showing changes in **loss**, **accuracy**, **precision**, and **recall** over time.\n\n'
+        f'  - Improvement in these metrics over time generally indicates that the model is learning and improving.\n\n'
+        f'  - However, if a learning curve **plateaus**, it may suggest that the model has reached its learning capacity, and further training may not yield significant improvements.'
+    )
+
+    st.write(
+        f'**Analyzing Model Behavior:**\n\n'
+        f'  - By observing learning curves, we can detect issues in the model’s training process.\n\n'
+        f'  - **Sudden shifts** or **lack of progress** in the curves might indicate underlying problems like **overfitting** (model fits the training data too closely) or **underfitting** (model fails to capture the underlying patterns in the data).\n\n'
+        f'  - **Consistent monitoring** of these curves helps ensure the model is on the right track and performing optimally.'
+    )
+
+    st.write(
+        f'### Overall:\n\n'
+        f'Learning curves provide crucial insights into the model’s training dynamics, enabling better evaluation and optimization of its performance. '
+        f'By carefully interpreting these curves, we can make informed decisions to improve model accuracy and reduce errors.'
+    )
+
+    
+
+
+
