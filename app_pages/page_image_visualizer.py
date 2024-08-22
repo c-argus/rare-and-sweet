@@ -9,6 +9,49 @@ from matplotlib.pyplot import imread
 import itertools
 import random
 
+# Function to generate and display a montage of images from a specific label within the dataset
+def image_montage(dir_path, label_to_display, nrows, ncols, figsize=(15, 10)):
+    sns.set_style("dark")
+    labels = os.listdir(dir_path)
+
+    # Check if the selected label exists in the dataset
+    if label_to_display in labels:
+
+        # Get the list of images for the selected label
+        images_list = os.listdir(dir_path + '/' + label_to_display)
+        if nrows * ncols < len(images_list):
+            img_idx = random.sample(images_list, nrows * ncols)
+        else:
+            print(
+                f'Reduce the number of rows or columns for the montage. '
+                f'The selected label contains only {len(images_list)} images, '
+                f'but you requested a montage with {nrows * ncols} spaces.'
+            )
+            return
+
+        # Generate indices for plotting the images
+        row_indices = range(0, nrows)
+        col_indices = range(0, ncols)
+        plot_idx = list(itertools.product(row_indices, col_indices))
+
+        # Create and display the montage
+        fig, axes = plt.subplots(nrows=nrows, ncols=ncols, figsize=figsize)
+        for x in range(0, nrows * ncols):
+            img = imread(dir_path + '/' + label_to_display + '/' + img_idx[x])
+            img_shape = img.shape
+            axes[plot_idx[x][0], plot_idx[x][1]].imshow(img)
+            axes[plot_idx[x][0], plot_idx[x][1]].set_title(f"Width {img_shape[1]}px x Height {img_shape[0]}px")
+            axes[plot_idx[x][0], plot_idx[x][1]].set_xticks([])
+            axes[plot_idx[x][0], plot_idx[x][1]].set_yticks([])
+        plt.tight_layout()
+
+        st.pyplot(fig=fig)
+        plt.show()
+
+    else:
+        print('The selected label is not available.')
+        print(f'Available labels are: {labels}')
+
 # Function that handles the actions triggered by the checkbox selections and 
 # displays the relevant visualizations and explanations.
 
@@ -72,48 +115,7 @@ def page_image_visualizer_body():
                             nrows=8, ncols=3, figsize=(10, 25))
         st.write('---')
 
-    # Function to generate and display a montage of images from a specific label within the dataset
-    def image_montage(dir_path, label_to_display, nrows, ncols, figsize=(15, 10)):
-        sns.set_style("dark")
-        labels = os.listdir(dir_path)
 
-        # Check if the selected label exists in the dataset
-        if label_to_display in labels:
-
-            # Get the list of images for the selected label
-            images_list = os.listdir(dir_path+ '/'+ label_to_display)
-            if nrows * ncols < len(images_list):
-                img_idx = random.sample(images_list, nrows * ncols)
-            else:
-                print(
-                    f'Reduce the number of rows or columns for the montage. '
-                    f'The selected label contains only {len(images)} images, '
-                    f'but you requested a montage with {nrows * ncols} spaces.'
-                )
-                return
-
-            # Generate indices for plotting the images
-            row_indices = range(0, nrows)
-            col_indices = range(0, ncols)
-            plot_idx = list(itertools.product(list_rows, list_cols))
-
-            # Create and display the montage
-            fig, axes = plt.subplots(nrows=nrows, ncols=ncols, figsize=figsize)
-            for x in range(0, nrows * ncols):
-                img = imread(dir_path + '/' + label_to_display + '/' + img_idx[x])
-                img_shape = img.shape
-                axes[plot_idx[x][0], plot_idx[x][1]].imshow(img)
-                axes[plot_idx[x][0], plot_idx[x][1]].set_title(f"Width {img_shape[1]}px x Height {img_shape[0]}px")
-                axes[plot_idx[x][0], plot_idx[x][1]].set_xticks([])
-                axes[plot_idx[x][0], plot_idx[x][1]].set_yticks([])
-            plt.tight_layout()
-
-            st.pyplot(fig=fig)
-            plt.show()
-
-        else:
-            print('The selected label is not available.')
-            print(f'Available labels are: {labels}')
 
 
 
