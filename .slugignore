@@ -15,13 +15,13 @@
 *.avi
 *.mov
 
-# Exclude test, docs, assets, and node_modules directories
+# Exclude directories
 /test/
 /docs/
 /.git/
 /documentation/
 /assets/
-/.node_modules/
+/node_modules/
 /venv/
 /__pycache__/
 /inputs/
@@ -32,8 +32,10 @@
 /inputs/cherry-leaves_dataset/cherry-leaves/test/
 /inputs/cherry-leaves_dataset/cherry-leaves/train/
 /inputs/cherry_leaves/cherry-leaves/train/
-/inputs/cherry-leaves/cherry-leaves/test/
+/inputs/cherry_leaves/cherry-leaves/test/
 
-# Ignore README and any other unnecessary files
+# Ignore README and other unnecessary files
 README.md
+
+
 
