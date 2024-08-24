@@ -1,4 +1,4 @@
-# Ignore common non-essential files
+# Ignore common non-essential files and directories
 *.jpg
 *.jpeg
 *.png
@@ -15,21 +15,25 @@
 *.avi
 *.mov
 
-# Ignore specific directories
+# Exclude test, docs, assets, and node_modules directories
 /test/
-.git/
-.documentation/
-.assets/
-.inputs/
-venv/
-__pycache__/
-node_modules/
-inputs/
+/docs/
+/.git/
+/documentation/
+/assets/
+/.node_modules/
+/venv/
+/__pycache__/
+/inputs/
 
-# Ignore large input files and directories not needed in production
+# Exclude specific input files and directories that are not needed in production
 /inputs/cherry_leaves/cherry-leaves/healthy/
 /inputs/cherry_leaves/cherry-leaves/powdery_mildew/
 /inputs/cherry-leaves_dataset/cherry-leaves/test/
 /inputs/cherry-leaves_dataset/cherry-leaves/train/
 /inputs/cherry_leaves/cherry-leaves/train/
-/inputs/cherry_leaves/cherry-leaves/test/
+/inputs/cherry-leaves/cherry-leaves/test/
+
+# Ignore README and any other unnecessary files
+README.md
+
