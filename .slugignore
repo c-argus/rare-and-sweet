@@ -1,6 +1,35 @@
-*.pyc
-__pycache__/
+# Ignore common non-essential files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.tmp
+*.backup
 *.log
-tests/
+*.pdf
+*.zip
+*.tar.gz
+*.ipynb
+*.md
+*.mp4
+*.avi
+*.mov
+
+# Ignore specific directories
+/test/
 .git/
-.vscode/
+.documentation/
+.assets/
+.inputs/
+venv/
+__pycache__/
+node_modules/
+inputs/
+
+# Ignore large input files and directories not needed in production
+/inputs/cherry_leaves/cherry-leaves/healthy/
+/inputs/cherry_leaves/cherry-leaves/powdery_mildew/
+/inputs/cherry-leaves_dataset/cherry-leaves/test/
+/inputs/cherry-leaves_dataset/cherry-leaves/train/
+/inputs/cherry_leaves/cherry-leaves/train/
+/inputs/cherry_leaves/cherry-leaves/test/
