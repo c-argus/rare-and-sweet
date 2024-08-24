@@ -36,6 +36,7 @@ inputs/cherry-leaves_dataset/cherry-leaves/train/powdery_mildew
 
 # Ignore README and other unnecessary files
 README.md
+jupyter_notebooks
 
 
 
