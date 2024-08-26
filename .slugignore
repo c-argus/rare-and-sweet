@@ -1,4 +1,4 @@
-# Ignore common non-essential files and directories
+# Ignore image and media files not needed in production
 *.jpg
 *.jpeg
 *.png
@@ -9,13 +9,15 @@
 *.pdf
 *.zip
 *.tar.gz
-*.ipynb
-*.md
 *.mp4
 *.avi
 *.mov
 
-# Exclude directories
+# Ignore Jupyter notebooks and markdown files not needed in production
+*.ipynb
+*.md
+
+# Exclude directories that are not required for running the app
 /test/
 /docs/
 /.git/
@@ -25,8 +27,9 @@
 /venv/
 /__pycache__/
 /inputs/
+/jupyter_notebooks/
 
-# Exclude specific input files and directories that are not needed in production
+# Ignore specific large datasets or data directories not required in production
 inputs/cherry-leaves_dataset/cherry-leaves/test
 inputs/cherry-leaves_dataset/cherry-leaves/train
 inputs/cherry-leaves_dataset/cherry-leaves/test/healthy
@@ -34,9 +37,9 @@ inputs/cherry-leaves_dataset/cherry-leaves/test/powdery_mildew
 inputs/cherry-leaves_dataset/cherry-leaves/train/healthy
 inputs/cherry-leaves_dataset/cherry-leaves/train/powdery_mildew
 
-# Ignore README and other unnecessary files
+# Ignore README and other unnecessary documentation
 README.md
-jupyter_notebooks
+
 
 
 
