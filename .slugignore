@@ -20,6 +20,7 @@
 /test/
 /docs/
 /.git/
+.github
 /documentation/
 /assets/
 /node_modules/
@@ -34,7 +35,11 @@ kaggle.json
 
 # Ignore specific large datasets or data directories not required in production
 inputs/cherry-leaves_dataset/cherry-leaves/test
+inputs/cherry-leaves_dataset/cherry-leaves/test/healthy
+inputs/cherry-leaves_dataset/cherry-leaves/test/powdery_mildew
 inputs/cherry-leaves_dataset/cherry-leaves/train
+inputs/cherry-leaves_dataset/cherry-leaves/train/healthy
+inputs/cherry-leaves_dataset/cherry-leaves/train/powdery_mildew
 
 # Ignore README and other unnecessary documentation
 README.md
