@@ -26,12 +26,14 @@
 /node_modules/
 /venv/
 /__pycache__/
-/inputs/
 /jupyter_notebooks/
 attachments/*
 .gitpod.dockerfile
 .gitpod.yml
 kaggle.json
+
+# Ignore README and other unnecessary documentation
+README.md
 
 # Ignore specific large datasets or data directories not required in production
 inputs/cherry-leaves_dataset/cherry-leaves/test
@@ -42,9 +44,6 @@ inputs/cherry-leaves_dataset/cherry-leaves/train/healthy
 inputs/cherry-leaves_dataset/cherry-leaves/train/powdery_mildew
 inputs/cherry-leaves_dataset/cherry-leaves/healthy
 inputs/cherry-leaves_dataset/cherry-leaves/powdery_mildew
-
-# Ignore README and other unnecessary documentation
-README.md
 
 
 
