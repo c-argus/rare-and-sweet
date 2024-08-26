@@ -40,6 +40,8 @@ inputs/cherry-leaves_dataset/cherry-leaves/test/powdery_mildew
 inputs/cherry-leaves_dataset/cherry-leaves/train
 inputs/cherry-leaves_dataset/cherry-leaves/train/healthy
 inputs/cherry-leaves_dataset/cherry-leaves/train/powdery_mildew
+inputs/cherry-leaves_dataset/cherry-leaves/healthy
+inputs/cherry-leaves_dataset/cherry-leaves/powdery_mildew
 
 # Ignore README and other unnecessary documentation
 README.md
