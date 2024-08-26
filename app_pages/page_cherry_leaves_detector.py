@@ -13,9 +13,9 @@ from src.machine_learning.predictive_analysis import (
 
 def resize_input_image(img, version):
     """
-    Adjust the input image to match the expected model dimensions of 256x256 pixels.
+    Adjust the input image to match the expected model dimensions of 160x160 pixels.
     """
-    image_shape = (256, 256)  # Update to 256x256 dimensions
+    image_shape = (160, 160)  # Update to 160x160 dimensions
     img_resized = img.resize((image_shape[1], image_shape[0]), Image.LANCZOS)
     img_array = np.array(img_resized)
     img_array = np.expand_dims(img_array, axis=0) / 255.0  # Normalize and add batch dimension

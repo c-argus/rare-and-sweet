@@ -5,7 +5,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import imread
-
+from PIL import Image
 import itertools
 import random
 
@@ -18,7 +18,7 @@ def image_montage(dir_path, label_to_display, nrows, ncols, figsize=(15, 10)):
     if label_to_display in labels:
 
         # Get the list of images for the selected label
-        images_list = os.listdir(dir_path + '/' + label_to_display)
+        images_list = os.listdir(os.path.join(dir_path, label_to_display))
         if nrows * ncols < len(images_list):
             img_idx = random.sample(images_list, nrows * ncols)
         else:
@@ -78,6 +78,7 @@ def page_image_visualizer_body():
             'Powdery mildew samples, in particular, exhibited slight texture differences in the average images.'
         )
         
+        # Convert PIL image to a format suitable for st.image display
         st.image(avg_powdery_mildew_img, caption='Powdery Mildew Leaf - Average Variability')
         st.image(avg_healthy_img, caption='Healthy Leaf - Average Variability')
         st.info(
@@ -107,12 +108,12 @@ def page_image_visualizer_body():
     if st.checkbox('Generate Image Montage'):
         st.write('Click the "Create Montage" button to refresh the montage.')
         my_data_dir = 'inputs/cherry-leaves_dataset/cherry-leaves'
-        labels = os.listdir(my_data_dir + '/validation')
+        labels = os.listdir(os.path.join(my_data_dir, 'validation'))
         label_to_display = st.selectbox(label='Choose a Label', options=labels, index=0)
         if st.button("Create Montage"):
-            image_montage(dir_path=my_data_dir + '/validation',
-                            label_to_display=label_to_display,
-                            nrows=8, ncols=3, figsize=(10, 25))
+            image_montage(dir_path=os.path.join(my_data_dir, 'validation'),
+                          label_to_display=label_to_display,
+                          nrows=8, ncols=3, figsize=(10, 25))
         st.write('---')
 
 
