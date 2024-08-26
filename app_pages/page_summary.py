@@ -27,18 +27,6 @@ def page_summary_body():
         f'images of cherry trees.\n\n'
     )
 
-    # Define the file paths to example images of healthy and powdery mildew leaves
-    image_paths = [
-        'inputs/cherry-leaves_dataset/cherry-leaves/validation/healthy/40dce93a-7697-4c0d-b37d-e3147c7ece78___JR_HL 9464.JPG',
-        'inputs/cherry-leaves_dataset/cherry-leaves/validation/powdery_mildew/26cdf0b5-906d-4341-a07b-d8d9ec21cda7___FREC_Pwd.M 5151.JPG'
-    ]
-
-    # Define captions for the images to explain what each image represents
-    captions = ["Healthy Leaf Example", "Powdery Mildew Leaf Example"]
-
-    # Display the images side by side in the Streamlit app with captions
-    st.image(image_paths, caption=captions)
-
     # Provide links for additional information and references
     st.info(
         f'For further information:\n'
