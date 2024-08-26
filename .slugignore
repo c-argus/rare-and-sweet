@@ -1,7 +1,6 @@
 # Ignore image and media files not needed in production
 *.jpg
 *.jpeg
-*.png
 *.gif
 *.tmp
 *.backup
