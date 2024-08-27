@@ -21,6 +21,7 @@
 /docs/
 /.git/
 .github
+.gitignore
 /documentation/
 /assets/
 /node_modules/
@@ -31,6 +32,8 @@ attachments/*
 .gitpod.dockerfile
 .gitpod.yml
 kaggle.json
+tests/
+.env
 
 # Ignore README and other unnecessary documentation
 README.md
