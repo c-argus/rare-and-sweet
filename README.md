@@ -30,7 +30,7 @@ To save time in this process, the IT team suggested an ML system that detects in
 
 - **Hypothesis 2** proposes that a CNN can accurately predict the health status of a leaf, which will be validated through model training, evaluation metrics, and real-world testing.
 
-    **Validation**: Validated through model training, evaluation metrics, and real-world testing.
+    **Validation**: Validated through model training, evaluation metrics, and real-world testing. 
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
 
