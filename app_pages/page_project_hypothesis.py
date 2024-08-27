@@ -1,5 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plt
 
 # Function to display the Project Insights and Findings page
 def page_project_hypothesis_body():

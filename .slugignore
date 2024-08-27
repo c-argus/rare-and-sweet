@@ -1,50 +1,35 @@
-# Ignore image and media files not needed in production
-*.jpg
-*.jpeg
-*.gif
-*.tmp
-*.backup
-*.log
-*.pdf
-*.zip
-*.tar.gz
-*.mp4
-*.avi
-*.mov
+# Exclude dataset files
+inputs/cherry_leaves_dataset/cherry-leaves/test/healthy/*
+inputs/cherry_leaves_dataset/cherry-leaves/test/powdery_mildew/*
+inputs/cherry_leaves_dataset/cherry-leaves/train/healthy/*
+inputs/cherry_leaves_dataset/cherry-leaves/train/powdery_mildew/*
 
-# Ignore Jupyter notebooks and markdown files not needed in production
-*.ipynb
-*.md
-
-# Exclude directories that are not required for running the app
-/test/
-/docs/
-/.git/
-.github
-/documentation/
-/assets/
-/node_modules/
-/venv/
-/__pycache__/
-/jupyter_notebooks/
-attachments/*
+# Exclude development environment configuration files
 .gitpod.dockerfile
 .gitpod.yml
-kaggle.json
 
-# Ignore README and other unnecessary documentation
-README.md
+# Exclude Python cache files and directories
+app_pages/__pycache__/*
+__pycache__/
+*.pyc
+*.pyo
 
-# Ignore specific large datasets or data directories not required in production
-inputs/cherry-leaves_dataset/cherry-leaves/test
-inputs/cherry-leaves_dataset/cherry-leaves/test/healthy
-inputs/cherry-leaves_dataset/cherry-leaves/test/powdery_mildew
-inputs/cherry-leaves_dataset/cherry-leaves/train
-inputs/cherry-leaves_dataset/cherry-leaves/train/healthy
-inputs/cherry-leaves_dataset/cherry-leaves/train/powdery_mildew
-inputs/cherry-leaves_dataset/cherry-leaves/healthy
-inputs/cherry-leaves_dataset/cherry-leaves/powdery_mildew
+# Exclude Jupyter Notebooks and checkpoint files
+jupyter_notebooks/
+.ipynb_checkpoints/
 
+# Exclude Markdown, log, and unnecessary system files
+*.md
+*.log
+.DS_Store
+
+# Exclude virtual environment and editor settings
+venv/
+.vscode/
+
+# Exclude test and temporary files
+.pytest_cache/
+.env
 
 
 
