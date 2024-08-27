@@ -41,13 +41,46 @@ The confusion matrix, in particular, highlighted the model’s precision in dist
 
 The high performance across these metrics indicates that the model is highly effective in distinguishing between healthy and infected leaves, thereby confirming the initial hypothesis that a CNN could be used for reliable disease detection. These results suggest that the model can serve as a valuable tool in agricultural settings for the early detection and management of powdery mildew in cherry orchards, potentially reducing the reliance on manual inspection and improving overall crop health monitoring. 
 
-## The rationale to map the business requirements to the Data Visualisations and ML tasks
+## Mapping Business Requirements to Data Visualizations and ML Tasks
 
-- List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
+### Business Requirement 1:
+
+- As a user, I want to effortlessly navigate through an interactive dashboard to view and interpret the data presented.
+- As a user, I need to see an image collage displaying either healthy or powdery mildew-infected cherry leaves, allowing me to visually distinguish between them.
+- As a user, I want to view and toggle between visual graphs showing average images (and differences between averages) as well as image variability for both healthy and mildew-affected cherry leaves, helping me to recognize the visual markers indicative of leaf quality.
+
+### Business Requirement 2:
+
+- As a user, I want to utilize a machine learning model to receive a classification prediction for a provided image of a cherry leaf.
+- As a user, I need the ability to input new raw data on a cherry leaf, clean it, and then run it through the provided model.
+- As a user, I want to upload the cleaned data to the dashboard so the model can process it and immediately determine if the cherry leaf is healthy or infected with powdery mildew.
+- As a user, I want to save the model's predictions in a CSV file with timestamps so that I can maintain a record of all predictions made.
+
 
 ## ML Business Case
 
-To meet the business requirements, the project aims to develop a predictive model using machine learning. The primary ML task is binary image classification using a CNN. This model will automate the process of detecting powdery mildew, significantly reducing inspection times and labor costs, and potentially be scalable to other crops and diseases.
+* The objective is to create a machine learning tool that can effectively and precisely identify whether a cherry leaf is healthy or affected by powdery mildew, thereby improving the efficiency of inspections and enhancing labor quality.
+
+* A dataset provided by the client will be utilized to train this ML tool, which aims to accurately distinguish between healthy leaves and those infected with mildew.
+
+* The client also requires a user-friendly interface that facilitates the quick uploading of leaf images and achieves at least 97% accuracy in determining the health status of each leaf.
+
+* To maintain the confidentiality of proprietary information, suitable measures will be taken to secure customer data.
+
+* The success of this ML tool will be evaluated based on its accuracy and efficiency in detecting infected leaves, as well as its capacity to decrease the time and costs linked to manual inspections.
+
+* Additionally, the ML tool could be expanded to assess the success of powdery mildew treatments by determining whether the treated leaves have returned to a healthy state.
+
+* There is also potential for the ML tool to be adapted for other crops, particularly those requiring pest detection, to further enhance the efficiency and precision of inspection processes.
+
+* The performance of the ML tool will be validated by training and testing the model on a dataset of cherry leaf images labeled as either healthy or infected with powdery mildew, and its effectiveness will be measured using relevant metrics like accuracy or the F1 score.
+
+* The criteria for the model's success include:
+
+  * Demonstrating the ability to visually differentiate between healthy cherry leaves and those with powdery mildew.
+  * Accurately predicting whether a cherry leaf is healthy or infected.
+  * Achieving over 90% accuracy on test data.
+
 
 ### Machine Learning Workflow
 
@@ -66,6 +99,8 @@ The dashboard will provide the following features:
 - **Visualizations**: Interactive charts and graphs showing the distribution of healthy and diseased leaves, model accuracy, and other relevant metrics.
 - **Feedback Section**: A form allowing users to provide feedback on the model's performance.
 - **Navigation Menu**: Buttons to navigate between different sections of the dashboard.
+
+## ML Model Justification
 
 ## Unfixed Bugs
 
