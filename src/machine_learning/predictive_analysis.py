@@ -118,3 +118,4 @@ def load_model_and_predict(my_image, version):
 
 
 
+
