@@ -1,5 +1,4 @@
 import streamlit as st
-import matplotlib as plt 
 
 # Function to display the 'Quick Project Summary' section on the page 
 def page_summary_body():
