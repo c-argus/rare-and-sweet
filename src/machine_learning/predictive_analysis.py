@@ -114,3 +114,10 @@ def load_model_and_predict(my_image, version):
     return pred_proba, pred_class
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> aef9e72d651ee9684e1897b6f3f9affb51822f67
