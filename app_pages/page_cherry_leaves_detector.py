@@ -15,7 +15,7 @@ def resize_input_image(img, version):
     """
     Adjust the input image to match the expected model dimensions of 160x160 pixels.
     """
-    image_shape = (112, 112)  # Update to 112x112 dimensions
+    image_shape = (100, 100)  # Update to 100x100 dimensions
     img_resized = img.resize((image_shape[1], image_shape[0]), Image.LANCZOS)
     img_array = np.array(img_resized)
     img_array = np.expand_dims(img_array, axis=0) / 255.0  # Normalize and add batch dimension
