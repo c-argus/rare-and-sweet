@@ -57,7 +57,7 @@ def page_ml_performance():
 
     st.info(
         f'These results indicate that the model has attained an extremely low loss and very high accuracy, which reflects outstanding performance. '
-        f"A loss value of 0.0065 suggests that the model's predictions are highly accurate on average, while an accuracy of "
+        f"A loss value of 0.0063 suggests that the model's predictions are highly accurate on average, while an accuracy of "
         f'0.9988 indicates that the model correctly classifies the data points in approximately 99.8% of cases.'
     )
 

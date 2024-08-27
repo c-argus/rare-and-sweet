@@ -22,7 +22,7 @@ def page_project_hypothesis_body():
         f'clear patterns become evident, aiding in the distinction between infected and healthy leaves.'
     )
 
-    st.write("**For a more detailed view, please navigate to the visualizer tab.**")
+    st.write("**For a more detailed view, please navigate to the Image Visualizer tab.**")
 
     st.write("## Hypotesis 2 and Validation")
     st.write("* Predicting Leaf Health Status Using CNN: Validation through Model Training, Evaluation Metrics, and Real-World Testing")
