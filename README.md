@@ -8,6 +8,47 @@ Farmy & Foods is currently facing a significant challenge with powdery mildew, a
 
 The goal of this project is to develop a machine learning model capable of automatically detecting powdery mildew on cherry leaves from images, replacing the current manual inspection process. By deploying a CNN-based model, we aim to quickly and accurately identify diseased leaves, thereby reducing the time and labor costs involved in manual inspections. This will help Farmy & Foods maintain high-quality standards for their cherry crops and could be expanded to other crops, improving overall disease management across the company.
 
+## Content
+
+* [Introduction](#introduction)
+* [Objective](#objective)
+* [Dataset Content](#dataset-content)
+* [Business Requirements](#business-requirements)
+* [Hypothesis and Validation](#hypothesis-and-validation)
+  * [Hypothesis 1: Visual Differentiation](#hypothesis-1-visual-differentiation-of-healthy-and-infected-leaves)
+  * [Hypothesis 2: Predicting Leaf Health Status](#hypothesis-2-predicting-leaf-health-status-using-cnn)
+* [Mapping Business Requirements to Data Visualizations and ML Tasks](#mapping-business-requirements-to-data-visualizations-and-ml-tasks)
+  * [Business Requirement 1](#business-requirement-1)
+  * [Business Requirement 2](#business-requirement-2)
+* [ML Business Case](#ml-business-case)
+* [CRISP-DM Framework for Cherry Leaf Disease Detection](#crisp-dm-framework-for-cherry-leaf-disease-detection)
+  * [1. Business Understanding](#1-business-understanding)
+  * [2. Data Understanding](#2-data-understanding)
+  * [3. Data Preparation](#3-data-preparation)
+  * [4. Modeling](#4-modeling)
+  * [5. Evaluation](#5-evaluation)
+  * [6. Deployment](#6-deployment)
+* [Dashboard Design](#dashboard-design)
+  * [Summary Page](#1-summary-page)
+  * [Image Visualizer](#2-image-visualizer)
+  * [Powdery Mildew Detection](#3-powdery-mildew-detection)
+  * [Project Hypothesis](#4-project-hypothesis)
+  * [ML Performance Metrics](#5-ml-performance-metrics)
+* [ML Model Justification](#ml-model-justification)
+  * [Architecture](#architecture)
+  * [Hyperparameter Optimization](#hyperparameter-optimization)
+  * [Optimization Techniques](#optimization-techniques)
+  * [Rationale for Architectural Choices](#rationale-for-architectural-choices)
+  * [Model Iterations](#model-iterations)
+* [Deployment](#deployment)
+  * [Heroku](#heroku)
+* [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
+* [Additional Technologies Utilized](#additional-technologies-utilized)
+* [Unfixed Bugs](#unfixed-bugs)
+* [Credits](#credits)
+* [Acknowledgements](#acknowledgements)
+
+
 ## Dataset Content
 
 - The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/cherry-leaves).
@@ -219,11 +260,55 @@ The ML Prediction Metrics page provides a summary of the machine learning model'
 ![DashboardMLPerfomanceMetrics](assets/DashboardMLPM02.png)
 
 ## ML Model Justification
+The goal of the development was to build a robust and accurate model specifically tailored to predict whether a cherry leaf is healthy or affected by powdery mildew. The model is designed to effectively handle image data and perform binary classification with high accuracy.
 
+### Architecture
+The model architecture is a Convolutional Neural Network (CNN) designed to capture spatial hierarchies in the input images. The CNN consists of three convolutional layers, each followed by a max pooling layer, a dense layer with a ReLU activation function, and a final output layer with a sigmoid activation function. The CNN structure is optimized for extracting features from images by using convolutional filters to detect patterns and pooling layers to down-sample the feature maps. 
 
-## Unfixed Bugs
+The dense layer aggregates these features and maps them to a binary output using the ReLU activation function, while the final output layer employs a sigmoid activation function to output a value between 0 and 1, representing the probability of the input image belonging to one of the two classes (healthy or powdery mildew).
 
-At the time of deployment, some bugs related to the image upload functionality and real-time prediction display remain unfixed. These issues stem from limitations in the library used for image processing and the asynchronous handling of requests in the web framework. Future updates will focus on addressing these bugs as more advanced libraries and solutions become available..
+The number of filters in the convolutional layers is carefully chosen to capture increasing levels of feature complexity:
+- The first convolutional layer has 32 filters.
+- The second convolutional layer has 64 filters.
+- The third convolutional layer also has 64 filters.
+
+This progression in the number of filters allows the model to learn both low-level features in the earlier layers and more abstract, high-level features in the later layers, which is essential for accurate image classification.
+
+The decision to use 32, 64, and 64 filters is based on common practices for image classification tasks, especially when the input images have a moderate level of complexity and size. This configuration allows the model to effectively learn the spatial hierarchies present in the cherry leaf images.
+
+### Hyperparameter Optimization
+The model's hyperparameters were carefully selected based on empirical experimentation and common practices for CNNs:
+- **Number of Units in Dense Layer**: The dense layer contains 128 units. This number was chosen to balance model complexity with the available data, allowing the model to learn useful representations without overfitting.
+- **Learning Rate of Optimizer**: The Adam optimizer is used with a learning rate selected based on performance on a validation set. This learning rate was chosen to ensure stable convergence during training.
+
+**Early Stopping** is used to prevent overfitting by monitoring the validation loss and stopping training when the loss ceases to decrease. This technique ensures that the model does not learn to fit noise in the training data, thereby improving generalization to new, unseen data.
+
+### Optimization Techniques
+**Dropout** is employed as a regularization method to prevent overfitting. A dropout layer with a rate of 0.5 is added after the dense layer. This technique randomly sets a fraction of input units to zero during training, which helps prevent the network from becoming too dependent on any one neuron, encouraging more robust feature learning.
+
+**Adam Optimizer** is chosen for its ability to efficiently minimize the binary cross-entropy loss function. Adam combines the benefits of the AdaGrad and RMSProp algorithms to adapt the learning rate for each parameter, which makes it well-suited for handling sparse gradients and improving the training process for deep networks.
+
+**Data Augmentation** is applied to increase the diversity of the training data without actually collecting new data. Techniques such as rotation, width and height shifts, shear, zoom, and horizontal and vertical flips are applied. This improves the model's ability to generalize by exposing it to a wider variety of data during training.
+
+**Binary Cross-Entropy Loss Function** is used to optimize the model parameters, as this loss function is well-suited for binary classification tasks where the model outputs a probability value between 0 and 1.
+
+### Rationale for Architectural Choices
+Using three convolutional layers with increasing numbers of filters is a strategic choice to capture various levels of feature complexity. The initial layers focus on detecting edges and textures, while the later layers are tuned to recognize more complex shapes and patterns, which is critical for distinguishing between healthy and diseased leaves.
+
+**Sigmoid Activation Function** is chosen for the output layer because it effectively maps the model's outputs to a probability range between 0 and 1, which is suitable for binary classification tasks. This allows the model to produce a clear probabilistic output that can be easily thresholded to make binary decisions.
+
+The **ReLU Activation Function** in the hidden dense layer is used to introduce non-linearity into the model, enabling it to learn complex patterns and interactions between the features extracted by the convolutional layers.
+
+**Early Stopping** and **Dropout** are specifically used to prevent overfitting, ensuring that the model remains generalizable and performs well on unseen data, which is crucial given the limited dataset size.
+
+By balancing the model complexity with the amount of data available and incorporating various regularization and optimization techniques, the CNN is both effective in capturing relevant features for the task and robust against overfitting, making it a suitable choice for the binary classification of cherry leaf health.
+
+### Model Iterations
+The model demonstrates excellent training and validation performance, with accuracy consistently high and loss significantly reduced over multiple epochs, as shown in the line charts. The final performance metrics reflect these trends, with the model achieving an accuracy of 99.88% and a very low loss of 0.63%, indicating strong model convergence and predictive capabilities. Despite these impressive metrics, there may still be challenges with specific aspects of performance, such as recall, particularly if the model has difficulty correctly identifying all instances of certain classes (e.g., infected leaves misidentified as healthy), suggesting further tuning might be needed to address class-specific errors.
+
+![ModelGraph](assets/ModelIterations.png)
+
+![LossAccuracy](assets/LossAccuracy.png)
 
 ## Deployment
 
@@ -242,29 +327,47 @@ At the time of deployment, some bugs related to the image upload functionality a
 
 ## Main Data Analysis and Machine Learning Libraries
 
-The following libraries were used in the project:
-- **TensorFlow/Keras**: Used for building and training the Convolutional Neural Network (CNN).
-  - Example: `model = keras.Sequential([...])`
-- **OpenCV**: Used for image processing and augmentation.
-  - Example: `img = cv2.imread(image_path)`
-- **Matplotlib and Seaborn**: Used for creating visualizations and plots.
-  - Example: `plt.imshow(image)`
-- **NumPy and Pandas**: Used for data manipulation and analysis.
-  - Example: `data = pd.read_csv('data.csv')`
+- [NumPy](https://numpy.org): Utilized for data processing, preparation, and visualization. It serves as the foundation for TensorFlow.
+
+- [Pandas](https://pandas.pydata.org): Facilitates the conversion of numerical data into DataFrames for easier manipulation and analysis.
+
+- [Matplotlib](https://matplotlib.org): Used for reading, processing, and visualizing image data, as well as generating graphs from tabular data.
+
+- [Seaborn](https://seaborn.pydata.org): Aids in data visualization and presentation, including creating confusion matrix heatmaps and scatter plots for image dimensions.
+
+- [Plotly](https://plotly.com): Enables graphical visualization of data through interactive charts and plots.
+
+- [TensorFlow](https://www.tensorflow.org): A powerful machine learning library employed for building models.
+
+- [Keras Tuner](https://keras.io/keras_tuner): Helps tune hyperparameters to identify the best combinations for optimal model accuracy.
+
+- [Scikit-learn](https://scikit-learn.org): Provides tools for calculating class weights to address target imbalance and for generating classification reports.
+
+### Additional Technologies Utilized
+
+- [Streamlit](https://streamlit.io): A library designed for creating interactive web applications and dashboards tailored for data science projects.
+
+- [Heroku](https://www.heroku.com): Platform used for deploying the dashboard as a web application.
+
+- [Git/GitHub](https://github.com): Tools for version control and managing source code.
+
+- [VSCode](https://code.visualstudio.com): An integrated development environment (IDE) used for local coding and development.
+
+## Unfixed Bugs
+At the time of deployment, some bugs related to the image upload functionality and real-time prediction display remain unfixed. These issues stem from limitations in the library used for image processing and the asynchronous handling of requests in the web framework. Future updates will focus on addressing these bugs as more advanced libraries and solutions become available..
 
 ## Credits
 
 ### Content
-
-- The text for the Home page was taken from Wikipedia Article A.
-- Instructions on how to implement form validation on the Sign-Up page were taken from [Specific YouTube Tutorial](https://www.youtube.com/).
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/).
+- The Malaria Walkthrough Project from Code Institute was used as an educational tool and provided guidance throughout the development of this project.
+- The text for the Home page was adapted based on the content from this website: [Metos - Cherry Crop Disease Models](https://metos.ca/software-tools/crop-disease-models/fruits-horticulture/cherry/).
+- The [Streamlit documentation](https://docs.streamlit.io/) was referenced for further understanding and troubleshooting.
+- The [Huddy2022/milestone-project-mildew-detection-in-cherry-leaves](https://github.com/Huddy2022/milestone-project-mildew-detection-in-cherry-leaves) was consulted as a reference.
+The [DenysRudenko/Project5_Mildew-detection-cherry-leaves](https://github.com/DenysRudenko/Project5_Mildew-detection-cherry-leaves)
 
 ### Media
+- The app icon is taken from [Emojipedia](https://emojipedia.org/).
 
-- The photos used on the home and sign-up page are from This Open-Source site.
-- The images used for the gallery page were taken from this other open-source site.
-
-## Acknowledgements (optional)
-
-- Thank the people who provided support throughout this project.
+## Acknowledgements
+* Thanks to my mentor Precious Ijege for the support.
+* Thanks to my fiance and friends that helped me in the hard moments throughout the project.
