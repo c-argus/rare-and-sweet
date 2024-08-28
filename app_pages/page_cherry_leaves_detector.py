@@ -1,6 +1,6 @@
+import pandas as pd
 from PIL import Image
 import numpy as np
-import pandas as pd
 import streamlit as st
 
 # Import functions from your custom modules for handling downloads, predictions, and plotting
@@ -40,7 +40,9 @@ def page_cherry_leaves_detector_body():
                                      accept_multiple_files=True)
 
     if images_buffer is not None:
-        df_report = pd.DataFrame([])
+        df_report = pd.DataFrame([])  # Start with an empty DataFrame
+        reports = []  # List to collect dictionaries to be converted to DataFrame rows
+
         for image in images_buffer:
             img_pil = Image.open(image)
             st.info(f"Cherry Leaf Sample: **{image.name}**")
@@ -52,12 +54,15 @@ def page_cherry_leaves_detector_body():
             pred_proba, pred_class = load_model_and_predict(resized_img, version=version)
             plot_predictions_probabilities(pred_proba, pred_class)
 
-            df_report = df_report.append({"Name": image.name, 'Result': pred_class}, ignore_index=True)
+            reports.append({"Name": image.name, 'Result': pred_class})  # Append the dictionary to the list
+        
+        df_report = pd.DataFrame(reports)  # Convert the list of dictionaries to a DataFrame
         
         if not df_report.empty:
             st.success("Analysis Report")
             st.table(df_report)
             st.markdown(download_dataframe_as_csv(df_report), unsafe_allow_html=True)
+
 
 
 
