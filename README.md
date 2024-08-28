@@ -314,7 +314,7 @@ The model demonstrates excellent training and validation performance, with accur
 
 ### Heroku
 
-- The App live link is: `https://YOUR_APP_NAME.herokuapp.com/`
+- The App live is: [Cherry Leaves Disease Detector](https://mildewdetectionincherryleaf-eb586cae0ee9.herokuapp.com/)
 - Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
 - The project was deployed to Heroku using the following steps.
 
@@ -353,8 +353,16 @@ The model demonstrates excellent training and validation performance, with accur
 
 - [VSCode](https://code.visualstudio.com): An integrated development environment (IDE) used for local coding and development.
 
-## Unfixed Bugs
-At the time of deployment, some bugs related to the image upload functionality and real-time prediction display remain unfixed. These issues stem from limitations in the library used for image processing and the asynchronous handling of requests in the web framework. Future updates will focus on addressing these bugs as more advanced libraries and solutions become available..
+## Bugs
+* An AttributeError occurred in the Cherry Leaves Disease Detector application once deployed on Heroku. 
+The error, AttributeError: 'DataFrame' object has no attribute 'append', was due to the deprecation of the .append() method in Pandas version 1.4.0, which was previously used for appending rows to a DataFrame. 
+The error was in the page_cherry_leaves_detector_body function in page_cherry_leaves_detector.py. and in the page_cherry_leaves_detector_body function within page_cherry_leaves_detector.py
+To fix this, replaced .append() with a list to collect data and convert the list to a DataFrame once using pd.DataFrame(). 
+This approach improves performance, memory efficiency, and compatibility with the latest Pandas version. 
+The modified code initializes an empty list, collects image data and prediction results into this list, and then creates the DataFrame after all data is collected. 
+![Bug1](assets/Bug1.png)
+![Bug2](assets/Bug2.png)
+
 
 ## Credits
 
