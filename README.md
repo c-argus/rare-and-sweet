@@ -44,7 +44,7 @@ The goal of this project is to develop a machine learning model capable of autom
   * [Heroku](#heroku)
 * [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
 * [Additional Technologies Utilized](#additional-technologies-utilized)
-* [Unfixed Bugs](#unfixed-bugs)
+* [Bugs](#unfixed-bugs)
 * [Credits](#credits)
 * [Acknowledgements](#acknowledgements)
 
