@@ -11,7 +11,7 @@ def page_ml_performance():
     '''
 
     st.title("Train, Validation and Test Set: Labels Frequencies")
-    st. write(
+    st.write(
         f'Dataset was divided into 3 subsets: \n\n'
         f'* Training Set: consisting of 70% of the data.\n'
         f'* Test Set: consisting of 10% of the data.\n'
@@ -30,7 +30,7 @@ def page_ml_performance():
     st.write("---")
 
     st.write("### Model History")
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
     with col1: 
         model_acc = plt.imread(f"outputs/{version}/model_training_acc.png")
         st.image(model_acc, caption='Model Training Accuracy')
@@ -101,6 +101,7 @@ def page_ml_performance():
         f'Learning curves provide crucial insights into the model’s training dynamics, enabling better evaluation and optimization of its performance. '
         f'By carefully interpreting these curves, we can make informed decisions to improve model accuracy and reduce errors.'
     )
+
 
     
 
